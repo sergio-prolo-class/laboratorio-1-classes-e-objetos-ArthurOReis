@@ -14,7 +14,7 @@ public class App {
         lampada1.ligar();
         lampada2.desligar();
 
-        System.out.println("Estado da lampada 1: " + lampada1.Estado());
-        System.out.println("Estado da lampada 2: " + lampada2.Estado());
+        System.out.println("Lampada 1 está ligada?: " + lampada1.Estado());
+        System.out.println("Lampada 2 está ligada?: " + lampada2.Estado());
     }
 }
