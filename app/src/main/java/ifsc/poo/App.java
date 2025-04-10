@@ -3,37 +3,38 @@
  */
 package ifsc.poo;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import ifsc.poo.classes.Lampada;
 import ifsc.poo.classes.Pessoa;
+import ifsc.poo.classes.Retangulo;
 
 public class App {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Selecione qual teste você gostaria de fazer (Escolher de 1-4):");
-        System.out.println("1 - Teste da Lâmpada");
-        System.out.println("2 - Teste da Pessoa");
-        System.out.println("3 - Teste do Retângulo");
-        System.out.println("4 - Teste do Relógio");
-        System.out.print("> ");
-        int escolha = scanner.nextInt();
-
-        switch(escolha){
-            case 1 -> TesteLampada();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Selecione qual teste você gostaria de fazer (Escolher de 1-4):");
+            System.out.println("1 - Teste da Lâmpada");
+            System.out.println("2 - Teste da Pessoa");
+            System.out.println("3 - Teste do Retângulo");
+            System.out.println("4 - Teste do Relógio");
+            System.out.print("> ");
+            int escolha = scanner.nextInt();
             
-            case 2 -> TestePessoa();
-
-            case 3 -> TesteRetangulo();
-
-            case 4 -> TesteRelogio();
-            
-            default -> System.out.println("Argumento inválido");
+            switch(escolha){
+                case 1 -> TesteLampada();
+                
+                case 2 -> TestePessoa();
+                
+                case 3 -> TesteRetangulo();
+                
+                case 4 -> TesteRelogio();
+                
+                default -> System.out.println("Argumento inválido");
+            }
         }
-
-        scanner.close();
     }
 
     public static void TesteLampada(){
@@ -74,7 +75,37 @@ public class App {
     }
 
     public static void TesteRetangulo(){
-        
+        Retangulo retangulo = new Retangulo();
+        retangulo.setLargura(5);
+        retangulo.setAltura(4);
+
+        System.out.printf("A área do retângulo é 20: %b\nSeu perímetro é 18: %b\n", (retangulo.getArea() == 20), (retangulo.getPerimetro() == 18));
+    
+        Retangulo retangulos[] = new Retangulo[10];
+        Random rand = new Random();
+
+        for (int i = 0; i < 10; i++) {
+            retangulos[i] = new Retangulo();
+            retangulos[i].setLargura(rand.nextInt(10) + 1);
+            retangulos[i].setAltura(rand.nextInt(10) + 1);
+        }
+
+        double maiorRazao = 0;
+        Retangulo melhorRetangulo = null;
+    
+        for (Retangulo r : retangulos) {
+            double razao = r.getArea() / r.getPerimetro();
+            if (razao > maiorRazao) {
+                maiorRazao = razao;
+                melhorRetangulo = r;
+            }
+        }
+    
+        if (melhorRetangulo != null) {
+            System.out.printf("O retângulo com a maior razão área/perímetro tem largura %.2f, altura %.2f, razão %.2f\n",
+                melhorRetangulo.getLargura(), melhorRetangulo.getAltura(), maiorRazao);
+        }
+    
     }
 
     public static void TesteRelogio(){
