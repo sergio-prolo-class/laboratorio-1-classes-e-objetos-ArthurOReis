@@ -28,6 +28,6 @@ public class Pessoa {
 
     public void felizAniversario(){
         this.idade = this.idade + 1;
-        System.out.printf("Parabéns %s! Você está fazendo %d anos!", this.nome, this.idade);
+        System.out.printf("Parabéns %s! Você está fazendo %d anos!\n", this.nome, this.idade);
     }
 }

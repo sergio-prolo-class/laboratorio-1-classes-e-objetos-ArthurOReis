@@ -6,6 +6,7 @@ package ifsc.poo;
 import java.util.Scanner;
 
 import ifsc.poo.classes.Lampada;
+import ifsc.poo.classes.Pessoa;
 
 public class App {
 
@@ -48,7 +49,28 @@ public class App {
     }
 
     public static void TestePessoa(){
+        Pessoa pessoa1 = new Pessoa();
+        Pessoa pessoa2 = new Pessoa();
         
+        pessoa1.setNome("Alice");
+        pessoa1.setIdade(22);
+
+        pessoa2.setNome("Bruno");
+        pessoa2.setIdade(25);
+
+        pessoa2.felizAniversario();
+        pessoa2.felizAniversario();
+        pessoa2.felizAniversario();
+
+        System.out.printf("A idade de %s é %d\n", pessoa1.getNome(), pessoa1.getIdade());
+        System.out.printf("A idade de %s é %d\n", pessoa2.getNome(), pessoa2.getIdade());
+
+        // pessoa1.setIdade(-44);
+        // pessoa2.setNome("");
+
+        /*
+            Os dois últimos atributos estão comentados por não compilar o código, já que retorna erros já previstos na classe
+        */
     }
 
     public static void TesteRetangulo(){
