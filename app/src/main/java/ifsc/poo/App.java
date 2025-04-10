@@ -3,11 +3,39 @@
  */
 package ifsc.poo;
 
+import java.util.Scanner;
+
 import ifsc.poo.classes.Lampada;
 
 public class App {
 
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Selecione qual teste você gostaria de fazer (Escolher de 1-4):");
+        System.out.println("1 - Teste da Lâmpada");
+        System.out.println("2 - Teste da Pessoa");
+        System.out.println("3 - Teste do Retângulo");
+        System.out.println("4 - Teste do Relógio");
+        System.out.print("> ");
+        int escolha = scanner.nextInt();
+
+        switch(escolha){
+            case 1 -> TesteLampada();
+            
+            case 2 -> TestePessoa();
+
+            case 3 -> TesteRetangulo();
+
+            case 4 -> TesteRelogio();
+            
+            default -> System.out.println("Argumento inválido");
+        }
+
+        scanner.close();
+    }
+
+    public static void TesteLampada(){
         Lampada lampada1 = new Lampada();
         Lampada lampada2 = new Lampada();
 
@@ -16,5 +44,18 @@ public class App {
 
         System.out.println("Lampada 1 está ligada?: " + lampada1.Estado());
         System.out.println("Lampada 2 está ligada?: " + lampada2.Estado());
+        
+    }
+
+    public static void TestePessoa(){
+        
+    }
+
+    public static void TesteRetangulo(){
+        
+    }
+
+    public static void TesteRelogio(){
+        
     }
 }
