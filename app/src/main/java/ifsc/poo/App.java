@@ -3,9 +3,18 @@
  */
 package ifsc.poo;
 
+import ifsc.poo.classes.Lampada;
+
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Oi mãe!");
+        Lampada lampada1 = new Lampada();
+        Lampada lampada2 = new Lampada();
+
+        lampada1.ligar();
+        lampada2.desligar();
+
+        System.out.println("Estado da lampada 1: " + lampada1.Estado());
+        System.out.println("Estado da lampada 2: " + lampada2.Estado());
     }
 }
