@@ -9,7 +9,7 @@ public class Livro {
     private String[] generos_literarios = new String[2];
     private String[] titulos_capitulos = new String[30];
     private int[] capitulos_inicio = new int[30];
-    private int total_paginas;
+    private int total_paginas, paginas_lidas;
 
     public Livro(String titulo, String autor, String[] generos_literarios, String[] titulos_capitulos, int[] capitulos_inicio, int total_paginas){
         this.titulo = titulo;
@@ -18,6 +18,7 @@ public class Livro {
         this.titulos_capitulos = titulos_capitulos;
         this.capitulos_inicio = capitulos_inicio;
         this.total_paginas = total_paginas;
+        this.paginas_lidas = 0;
     }
 
     public String getTitulo() {
@@ -71,8 +72,13 @@ public class Livro {
         this.generos_literarios = generos_literarios;
     }
 
-    public String[] getTitulosCapitulos(){
-        return this.titulos_capitulos;
+    public String getCapituloAtual() {
+        for (int i = 0; i < this.capitulos_inicio.length; i++) {
+            if (this.paginas_lidas < this.capitulos_inicio[i]) {
+                return this.titulos_capitulos[i - 1]; // Retorna o capítulo anterior, pois o índice atual é o próximo capítulo
+            }
+        }
+        return this.titulos_capitulos[this.capitulos_inicio.length - 1]; // Retorna o último capítulo se todas as páginas foram lidas
     }
 
     public void setTitulosCapitulos(String[] titulos_capitulos){
@@ -105,6 +111,7 @@ public class Livro {
             throw new IllegalArgumentException("Quantia lida de páginas inválidas");
         } else {
             this.total_paginas -= paginas;
+            this.paginas_lidas += paginas;
         }
     }
 }

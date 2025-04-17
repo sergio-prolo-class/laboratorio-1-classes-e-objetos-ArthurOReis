@@ -179,7 +179,16 @@ public class App {
             paginasInicio, 
             464
         );
-        
+
+        livro_um.lerPaginas(90);
+        System.out.println("Quantia de páginas restantes: " + livro_um.getTotalPaginas());
+        System.out.println("Capitulo atual: " + livro_um.getCapituloAtual());
+
+        livro_um.lerPaginas(300);
+        System.out.println("Capitulo atual: " + livro_um.getCapituloAtual());
+
+        // livro_um.lerPaginas(300); // -> Como a quantidade de páginas restantes é menor, logo é retornado um erro
+
     }
 
     private static void aplicarDesconto(Produto produto) {
