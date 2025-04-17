@@ -48,7 +48,26 @@ public class Livro {
         return this.generos_literarios;
     }
 
+    private boolean isGeneroValido(String genero) {
+        String[] generosValidos = {"Fantasia", "Aventura", "Romance", "Mistério", "Terror", "Auto-ajuda", "Pedagógico"};
+        for (String valido : generosValidos) {
+            if (valido.equalsIgnoreCase(genero)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void setGenerosLiterarios(String[] generos_literarios){
+        if (generos_literarios.length > 2) {
+            throw new IllegalArgumentException("Os livros pode ter no máximo dois gêneros literários.");
+        }
+        for (String genero : generos_literarios) {
+            if (!isGeneroValido(genero)) {
+                throw new IllegalArgumentException("Gênero literário inválido: " + genero);
+            }
+        }
+
         this.generos_literarios = generos_literarios;
     }
 
@@ -57,6 +76,10 @@ public class Livro {
     }
 
     public void setTitulosCapitulos(String[] titulos_capitulos){
+        if (titulos_capitulos.length > 30) {
+            throw new IllegalArgumentException("Um livro pode ter no máximo 30 capítulos.");
+        }
+        
         this.titulos_capitulos = titulos_capitulos;
     }
 
@@ -65,6 +88,23 @@ public class Livro {
     }
 
     public void setCapitulosInicio(int[] capitulos_inicio){
+        if (capitulos_inicio.length > 30) {
+            throw new IllegalArgumentException("Os livros só podem ter no máximo 30 capítulos.");
+        }
+        for (int pagina : capitulos_inicio) {
+            if (pagina < 0 || pagina > this.total_paginas) {
+                throw new IllegalArgumentException("Página de início inválida: " + pagina);
+            }
+        }
         this.capitulos_inicio = capitulos_inicio;
+    
+    }
+
+    public void lerPaginas(int paginas){
+        if(paginas > this.total_paginas || paginas < 0){
+            throw new IllegalArgumentException("Quantia lida de páginas inválidas");
+        } else {
+            this.total_paginas -= paginas;
+        }
     }
 }
