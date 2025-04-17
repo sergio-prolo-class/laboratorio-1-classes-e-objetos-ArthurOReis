@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import ifsc.poo.classes.Lampada;
 import ifsc.poo.classes.Pessoa;
+import ifsc.poo.classes.Relogio;
 import ifsc.poo.classes.Retangulo;
 
 public class App {
@@ -109,6 +110,12 @@ public class App {
     }
 
     public static void TesteRelogio(){
-        
+        Relogio relogio = new Relogio();
+        relogio.ajustaHora((byte)14, (byte)58, (byte)32);
+
+        relogio.avancaMinuto();
+        relogio.avancaMinuto();
+
+        System.out.printf("%2d:%2d:%2d");
     }
 }
