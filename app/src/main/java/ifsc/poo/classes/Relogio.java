@@ -12,9 +12,12 @@ public class Relogio {
     }
 
     public void ajustaHora(byte hora, byte minuto, byte segundo){
-        this.segundo = hora;
+        if (hora < 0 || hora > 23 || minuto < 0 || minuto > 59 || segundo < 0 || segundo > 59) {
+            throw new IllegalArgumentException("Hora, minuto ou segundo inválidos.");
+        }
+        this.segundo = segundo;
         this.minuto = minuto;
-        this.hora = segundo;
+        this.hora = hora;
     }
 
     public byte getHora(){ 
@@ -22,29 +25,25 @@ public class Relogio {
     }
 
     public void avancaHora(){
-        if(this.hora == 23){
-            this.hora = 0;
-            return;
-        }
-        this.hora += 1;
+        this.hora = (byte)((this.hora + 1) % 24);
     }
 
     public void avancaMinuto(){
-        if(this.minuto == 59){
+        if (this.minuto == 59) {
             avancaHora();
             this.minuto = 0;
-            return;
+        } else {
+            this.minuto += 1;
         }
-        this.minuto += 1;
     }
     
     public void avancaSegundo(){
-        if(this.segundo == 59){
+        if (this.segundo == 59) {
             avancaMinuto();
             this.segundo = 0;
-            return;
+        } else {
+            this.segundo += 1;
         }
-        this.segundo += 1;
     }
 
 }
