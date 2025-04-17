@@ -57,6 +57,7 @@ public class App {
         System.out.println("Lampada 1 está ligada?: " + lampada1.Estado());
         System.out.println("Lampada 2 está ligada?: " + lampada2.Estado());
         
+        System.out.println("Quantia lâmpadas: " + lampada1.getQntTotalLampadas());
     }
 
     public static void TestePessoa(){
