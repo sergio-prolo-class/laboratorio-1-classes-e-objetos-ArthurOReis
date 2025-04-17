@@ -42,6 +42,6 @@ public class Produto {
     }
 
     public String anuncio(){
-        return this.nome + ": de R$" + this.preco + "por APENAS R$ " + (this.preco - (this.preco * this.desconto / 100)) + "!";
+        return this.nome + ": de R$ " + (this.preco + (this.preco * this.desconto / 100)) + " por APENAS R$ " + this.getPreco() + "!";
     }
 }
