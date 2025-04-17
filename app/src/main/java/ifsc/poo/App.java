@@ -61,7 +61,7 @@ public class App {
     }
 
     public static void TestePessoa(){
-        Pessoa pessoa1 = new Pessoa("Alice", 22);
+        Pessoa pessoa1 = new Pessoa("Alice", 22);   
         Pessoa pessoa2 = new Pessoa("Bruno", 25);
 
         pessoa2.felizAniversario();
