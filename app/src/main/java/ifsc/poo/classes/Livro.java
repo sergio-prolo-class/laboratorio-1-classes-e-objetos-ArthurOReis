@@ -10,4 +10,37 @@ public class Livro {
     private String[] titulos_capitulos = new String[30];
     private int[] capitulos_inicio = new int[30];
     private int total_paginas;
+
+    public Livro(String titulo, String autor, String[] generos_literarios, String[] titulos_capitulos, int[] capitulos_inicio, int total_paginas){
+        this.titulo = titulo;
+        this.autor = autor;
+        this.generos_literarios = generos_literarios;
+        this.titulos_capitulos = titulos_capitulos;
+        this.capitulos_inicio = capitulos_inicio;
+        this.total_paginas = total_paginas;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public int getTotalPaginas() {
+        return total_paginas;
+    }
+
+    public void setTotalPaginas(int total_paginas) {
+        this.total_paginas = total_paginas;
+    }
 }
