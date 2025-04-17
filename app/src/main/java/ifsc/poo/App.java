@@ -120,12 +120,12 @@ public class App {
         relogio.avancaMinuto();
         relogio.avancaMinuto();
 
-        System.out.println(relogio.getHora());
+        System.out.println("Hora atual: " + relogio.getHora());
 
         relogio.ajustaHora((byte)23, (byte)59, (byte)59);
         relogio.avancaSegundo();
 
-        System.out.println(relogio.getHora());
+        System.out.println("Hora atual: " + relogio.getHora());
     }
 
     public static void TesteProduto(){
