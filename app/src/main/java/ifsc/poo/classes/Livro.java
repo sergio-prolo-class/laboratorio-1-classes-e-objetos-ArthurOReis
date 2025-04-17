@@ -43,4 +43,28 @@ public class Livro {
     public void setTotalPaginas(int total_paginas) {
         this.total_paginas = total_paginas;
     }
+
+    public String[] getGenerosLiterarios(){
+        return this.generos_literarios;
+    }
+
+    public void setGenerosLiterarios(String[] generos_literarios){
+        this.generos_literarios = generos_literarios;
+    }
+
+    public String[] getTitulosCapitulos(){
+        return this.titulos_capitulos;
+    }
+
+    public void setTitulosCapitulos(String[] titulos_capitulos){
+        this.titulos_capitulos = titulos_capitulos;
+    }
+
+    public int[] getCapitulosInicio(){
+        return this.capitulos_inicio;
+    }
+
+    public void setCapitulosInicio(int[] capitulos_inicio){
+        this.capitulos_inicio = capitulos_inicio;
+    }
 }
