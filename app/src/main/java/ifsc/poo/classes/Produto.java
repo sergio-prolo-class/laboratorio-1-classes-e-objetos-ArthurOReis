@@ -5,6 +5,18 @@ public class Produto {
     private int preco;
     private int desconto;
 
+    public Produto(String nome, int preco, int desconto){
+        this.nome = nome;
+        this.preco = preco;
+        this.desconto = desconto;
+    }
+
+    
+    public Produto(String nome, int preco){
+        this.nome = nome;
+        this.preco = preco;
+    }
+
     public String getNome() {
         return nome;
     }
