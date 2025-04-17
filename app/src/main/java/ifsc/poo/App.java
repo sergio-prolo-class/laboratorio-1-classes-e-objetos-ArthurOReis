@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import ifsc.poo.classes.Lampada;
+import ifsc.poo.classes.Livro;
 import ifsc.poo.classes.Pessoa;
 import ifsc.poo.classes.Produto;
 import ifsc.poo.classes.Relogio;
@@ -17,12 +18,13 @@ public class App {
     public static void main(String[] args) {
 
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Selecione qual teste você gostaria de fazer (Escolher de 1-5):");
+            System.out.println("Selecione qual teste você gostaria de fazer (Escolher de 1-6):");
             System.out.println("1 - Teste da Lâmpada");
             System.out.println("2 - Teste da Pessoa");
             System.out.println("3 - Teste do Retângulo");
             System.out.println("4 - Teste do Relógio");
             System.out.println("5 - Teste do Produto");
+            System.out.println("6 - Teste do Livro");
             System.out.print("> ");
             int escolha = scanner.nextInt();
             System.out.println();
@@ -37,6 +39,8 @@ public class App {
                 case 4 -> TesteRelogio();
                 
                 case 5 -> TesteProduto();
+                
+                case 6 -> TesteLivro();
                 
                 default -> System.out.println("Argumento inválido");
             }
@@ -149,6 +153,33 @@ public class App {
 
         System.out.println(produto_um.anuncio()); // O anúncio, apesar de funcionar, novamente lida com o problema de tipo de variável, não mostrando corretamente o preço do produto
         //TODO: Como observação final, para que a implementação da classe opere corretamente, será preciso trocar os atributos de preço e desconto para o tipo float, que permite números decimais
+    }
+    
+    public static void TesteLivro() {
+        String[] titulosCapitulos = {
+            "Uma Festa Muito Esperada", "A Sombra do Passado", "Três é Demais", 
+            "Um Atalho para Cogumelos", "Uma Conspiração Desmascarada", "A Floresta Velha", 
+            "Em Casa de Tom Bombadil", "Névoa nas Colinas dos Túmulos", "No Pônei Empinado", 
+            "Passolargo", "Um Faca na Noite", "Voo para o Vau", "Muitos Encontros", 
+            "O Conselho de Elrond", "O Anel Vai para o Sul", "Uma Jornada no Escuro", 
+            "A Ponte de Khazad-dûm", "Lothlórien", "O Espelho de Galadriel", 
+            "Adeus a Lórien", "O Grande Rio", "A Partida da Sociedade"
+        };
+
+        int[] paginasInicio = {
+            1, 23, 44, 66, 89, 110, 131, 154, 176, 197, 219, 240, 261, 
+            282, 301, 320, 341, 361, 383, 403, 423, 446
+        };
+
+        Livro livro_um = new Livro(
+            "O Senhor dos Anéis - A Sociedade do Anel", 
+            "J. R. R. Tolkien", 
+            new String[] {"Fantasia", "Aventura"}, 
+            titulosCapitulos, 
+            paginasInicio, 
+            464
+        );
+        
     }
 
     private static void aplicarDesconto(Produto produto) {
