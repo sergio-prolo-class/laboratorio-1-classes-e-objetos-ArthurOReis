@@ -25,8 +25,8 @@ public class Produto {
         this.nome = nome;
     }
 
-    public int getPreco() {
-        return preco;
+    public float getPreco() {
+        return (float)preco;
     }
 
     public void setPreco(int preco) {
@@ -39,5 +39,9 @@ public class Produto {
 
     public void setDesconto(int desconto) {
         this.desconto = desconto;
+    }
+
+    public String anuncio(){
+        return this.nome + ": de R$" + this.preco + "por APENAS R$ " + (this.preco - (this.preco * this.desconto / 100)) + "!";
     }
 }

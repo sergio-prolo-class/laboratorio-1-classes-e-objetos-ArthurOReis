@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import ifsc.poo.classes.Lampada;
 import ifsc.poo.classes.Pessoa;
+import ifsc.poo.classes.Produto;
 import ifsc.poo.classes.Relogio;
 import ifsc.poo.classes.Retangulo;
 
@@ -16,11 +17,12 @@ public class App {
     public static void main(String[] args) {
 
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Selecione qual teste você gostaria de fazer (Escolher de 1-4):");
+            System.out.println("Selecione qual teste você gostaria de fazer (Escolher de 1-5):");
             System.out.println("1 - Teste da Lâmpada");
             System.out.println("2 - Teste da Pessoa");
             System.out.println("3 - Teste do Retângulo");
             System.out.println("4 - Teste do Relógio");
+            System.out.println("5 - Teste do Produto");
             System.out.print("> ");
             int escolha = scanner.nextInt();
             
@@ -32,6 +34,8 @@ public class App {
                 case 3 -> TesteRetangulo();
                 
                 case 4 -> TesteRelogio();
+                
+                case 5 -> TesteProduto();
                 
                 default -> System.out.println("Argumento inválido");
             }
@@ -91,11 +95,11 @@ public class App {
             retangulos[i].setAltura(rand.nextInt(10) + 1);
         }
 
-        double maiorRazao = 0;
+        float maiorRazao = 0;
         Retangulo melhorRetangulo = null;
     
         for (Retangulo r : retangulos) {
-            double razao = r.getArea() / r.getPerimetro();
+            float razao = r.getArea() / r.getPerimetro();
             if (razao > maiorRazao) {
                 maiorRazao = razao;
                 melhorRetangulo = r;
@@ -116,6 +120,32 @@ public class App {
         relogio.avancaMinuto();
         relogio.avancaMinuto();
 
-        System.out.printf("%2d:%2d:%2d");
+        System.out.println(relogio.getHora());
+
+        relogio.ajustaHora((byte)23, (byte)59, (byte)59);
+        relogio.avancaSegundo();
+
+        System.out.println(relogio.getHora());
+    }
+
+    public static void TesteProduto(){
+        Produto produto_um = new Produto("Geladeira", 832);
+        Produto produto_dois = new Produto("Micro-ondas", 499);
+
+        produto_um.setDesconto(6);
+        produto_dois.setDesconto(12);
+
+        aplicarDesconto(produto_um);
+        aplicarDesconto(produto_dois);
+
+        System.out.printf("Produto: %s, novo preço: %.2f\n", produto_um.getNome(), produto_um.getPreco());
+        System.out.printf("Produto: %s, novo preço: %.2f\n", produto_dois.getNome(), produto_dois.getPreco());
+
+        System.out.println(produto_um.anuncio());
+    }
+
+    private static void aplicarDesconto(Produto produto) {
+        float precoComDesconto = produto.getPreco() - (produto.getPreco() * produto.getDesconto() / 100);
+        produto.setPreco((int) precoComDesconto);
     }
 }
