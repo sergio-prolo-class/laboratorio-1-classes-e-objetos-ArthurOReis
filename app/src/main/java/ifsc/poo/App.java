@@ -61,14 +61,8 @@ public class App {
     }
 
     public static void TestePessoa(){
-        Pessoa pessoa1 = new Pessoa();
-        Pessoa pessoa2 = new Pessoa();
-        
-        pessoa1.setNome("Alice");
-        pessoa1.setIdade(22);
-
-        pessoa2.setNome("Bruno");
-        pessoa2.setIdade(25);
+        Pessoa pessoa1 = new Pessoa("Alice", 22);
+        Pessoa pessoa2 = new Pessoa("Bruno", 25);
 
         pessoa2.felizAniversario();
         pessoa2.felizAniversario();

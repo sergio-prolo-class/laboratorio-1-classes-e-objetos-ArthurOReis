@@ -3,6 +3,19 @@ package ifsc.poo.classes;
 public class Pessoa {
     private String nome;
     private int idade;
+    private String cpf;
+
+    public Pessoa(String nome, int idade, String cpf){
+        this.nome = nome;
+        this.idade = idade;
+        this.cpf = cpf;
+    }
+
+    public Pessoa(String nome, int idade){
+        this.nome = nome;
+        this.idade = idade;
+        this.cpf = "123.456.789-00";
+    }
 
     public void setNome(String nome){
         if(nome.isEmpty()){
