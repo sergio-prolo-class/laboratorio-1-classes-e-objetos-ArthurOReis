@@ -5,42 +5,78 @@ public class Pessoa {
     private int idade;
     private String cpf;
 
-    public Pessoa(String nome, int idade, String cpf){
+    public Pessoa(String cpf, String nome, int idade){
         this.nome = nome;
         this.idade = idade;
-        this.cpf = cpf;
+        if(cpf.isEmpty()){
+            this.cpf = "123.456.789-00";
+        } else {
+            this.cpf = cpf;
+        }
     }
 
-    public Pessoa(String nome, int idade){
+
+    public Pessoa(String cpf, String nome){
         this.nome = nome;
-        this.idade = idade;
-        this.cpf = "123.456.789-00";
+        if(cpf.isEmpty()){
+            this.cpf = "123.456.789-00";
+        } else {
+            this.cpf = cpf;
+        }
+    }
+    
+    public Pessoa(String cpf){
+        if(cpf.isEmpty()){
+            this.cpf = "123.456.789-00";
+        } else {
+            this.cpf = cpf;
+        }
     }
 
-    public void setNome(String nome){
+    public boolean setNome(String nome){
         if(nome.isEmpty()){
-            throw new IllegalArgumentException("O nome não pode ser vazio.");
+            System.out.println("O nome não pode ser vazio.");
+            return false;
         }
         this.nome = nome;
+        return true;
     }
 
     public String getNome(){
         return this.nome;
     }
 
-    public void setIdade(int idade){
+    public boolean setIdade(int idade){
         if(idade < 0){
-            throw new IllegalArgumentException("A idade não pode ser negativa.");
+            System.out.println("A idade não pode ser negativa.");
+            return false;
         }
         this.idade = idade;
+        return true;
     }
 
     public int getIdade(){
         return this.idade;
     }
 
-    public void felizAniversario(){
+    public boolean felizAniversario(){
         this.idade = this.idade + 1;
         System.out.printf("Parabéns %s! Você está fazendo %d anos!\n", this.nome, this.idade);
+        return true;
+    }
+
+    public String getCPF() {
+        return this.cpf;
+    }
+
+
+    public boolean setCPF(String cpf){
+        String regex = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$";
+        if(!cpf.matches(regex)){
+            System.out.println("CPF inválido. O formato deve ser xxx.xxx.xxx-xx.");
+            return false;    
+        }
+        this.cpf = cpf;
+        return true;
     }
 }

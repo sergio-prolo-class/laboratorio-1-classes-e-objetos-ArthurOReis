@@ -61,8 +61,9 @@ public class App {
     }
 
     public static void TestePessoa(){
-        Pessoa pessoa1 = new Pessoa("Alice", 22);   
-        Pessoa pessoa2 = new Pessoa("Bruno", 25);
+        Pessoa pessoa1 = new Pessoa("");
+        Pessoa pessoa2 = new Pessoa("", "Arthur");
+        Pessoa pessoa3 = new Pessoa("109.876.543-21", "Eduardo", 19);
 
         pessoa2.felizAniversario();
         pessoa2.felizAniversario();
@@ -77,6 +78,9 @@ public class App {
         /*
             Os dois últimos atributos estão comentados por não compilar o código, já que retorna erros já previstos na classe
         */
+
+        System.out.println("O CPF do Arthur é: " + pessoa2.getCPF());
+        System.out.println("O CPF do Eduardo é: " + pessoa3.getCPF());
     }
 
     public static void TesteRetangulo(){

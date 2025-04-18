@@ -14,14 +14,16 @@ public class Lampada {
         qnt_total_lampadas++;
     }
 
-    public void ligar(){
+    public boolean ligar(){
         System.out.println("Ligando lâmpada");
         this.ligada = true;
+        return true;
     }
 
-    public void desligar(){
+    public boolean desligar(){
         System.out.println("Desligando lâmpada");
         this.ligada = false;
+        return true;
     }
 
     public boolean Estado(){
