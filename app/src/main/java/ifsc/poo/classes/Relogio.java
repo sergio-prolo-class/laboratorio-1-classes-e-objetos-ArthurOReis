@@ -5,11 +5,31 @@ public class Relogio {
     private byte minuto;
     private byte segundo;
 
+    public Relogio(byte hora, byte minuto, byte segundo){
+        this.segundo = segundo;
+        this.minuto = minuto;
+        this.hora = hora;
+    }
+
+    public Relogio(byte hora, byte minuto){
+        this.segundo = 00;
+        this.minuto = minuto;
+        this.hora = hora;
+    }
+
+    public Relogio(byte hora){
+        this.segundo = 00;
+        this.minuto = 00;
+        this.hora = hora;
+    }
+
     public Relogio(){
         this.segundo = 00;
         this.minuto = 00;
         this.hora = 00;
     }
+
+    
 
     public void ajustaHora(byte hora, byte minuto, byte segundo){
         if (hora < 0 || hora > 23 || minuto < 0 || minuto > 59 || segundo < 0 || segundo > 59) {
