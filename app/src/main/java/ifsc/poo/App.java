@@ -99,18 +99,11 @@ public class App {
     }
 
     public static void TesteRelogio(){
-        Relogio relogio = new Relogio();
-        relogio.ajustaHora((byte)14, (byte)58, (byte)32);
-
-        relogio.avancaMinuto();
-        relogio.avancaMinuto();
-
-        System.out.println("Hora atual: " + relogio.getHora());
-
-        relogio.ajustaHora((byte)23, (byte)59, (byte)59);
-        relogio.avancaSegundo();
-
-        System.out.println("Hora atual: " + relogio.getHora());
+        Relogio relogio1 = new Relogio((byte)14, (byte)30, (byte)45);
+        Relogio relogio2 = new Relogio((byte)10, (byte)15, (byte)20);
+        
+        int diferenca = relogio1.diferencaEmSegundos(relogio2);
+        System.out.println("Diferença em segundos: " + diferenca);
     }
 
     public static void TesteProduto(){
