@@ -85,10 +85,17 @@ public class App {
     public static void TesteRetangulo(){
         Retangulo r1 = new Retangulo(5, 4);
         Retangulo r2 = new Retangulo(6, 7);
+        Retangulo r3 = new Retangulo(2, 3);
         
         Retangulo maior = Retangulo.getMaiorAreaRetangulo();
+        Retangulo menor = Retangulo.getMenorPerimetroRetangulo();
+        
         System.out.println("Maior área: " + maior.getArea());
         System.out.println("Dimensões: " + maior.getLargura() + " por " + maior.getAltura());
+    
+        System.out.println("Menor perímetro: " + menor.getPerimetro());
+        System.out.println("Dimensões: " + menor.getLargura() + " por " + menor.getAltura());
+        
     }
 
     public static void TesteRelogio(){

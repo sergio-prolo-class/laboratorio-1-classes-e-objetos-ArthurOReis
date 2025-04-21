@@ -4,6 +4,8 @@ public class Retangulo {
     private float largura;
     private float altura;
     private static Retangulo maiorAreaRetangulo = null;
+    private static Retangulo menorPerimetroRetangulo = null;
+
 
     public Retangulo(float largura, float altura) {
         if (largura <= 0 || altura <= 0) {
@@ -15,6 +17,10 @@ public class Retangulo {
         if (maiorAreaRetangulo == null || this.getArea() > maiorAreaRetangulo.getArea()) {
             maiorAreaRetangulo = this;
         }
+
+        if (menorPerimetroRetangulo == null || this.getPerimetro() < menorPerimetroRetangulo.getPerimetro()) {
+            menorPerimetroRetangulo = this;
+        }
     }
 
     public Retangulo() {
@@ -23,6 +29,10 @@ public class Retangulo {
 
         if (maiorAreaRetangulo == null || this.getArea() > maiorAreaRetangulo.getArea()) {
             maiorAreaRetangulo = this;
+        }
+
+        if (menorPerimetroRetangulo == null || this.getPerimetro() < menorPerimetroRetangulo.getPerimetro()) {
+            menorPerimetroRetangulo = this;
         }
     }
 
@@ -62,5 +72,9 @@ public class Retangulo {
 
     public static Retangulo getMaiorAreaRetangulo() {
         return maiorAreaRetangulo;
+    }
+
+    public static Retangulo getMenorPerimetroRetangulo() {
+        return menorPerimetroRetangulo;
     }
 }
