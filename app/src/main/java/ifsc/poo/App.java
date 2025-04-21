@@ -3,7 +3,6 @@
  */
 package ifsc.poo;
 
-import java.util.Random;
 import java.util.Scanner;
 
 import ifsc.poo.classes.Lampada;
@@ -84,37 +83,12 @@ public class App {
     }
 
     public static void TesteRetangulo(){
-        Retangulo retangulo = new Retangulo();
-        retangulo.setLargura(5);
-        retangulo.setAltura(4);
-
-        System.out.printf("A área do retângulo é 20: %b\nSeu perímetro é 18: %b\n", (retangulo.getArea() == 20), (retangulo.getPerimetro() == 18));
-    
-        Retangulo retangulos[] = new Retangulo[10];
-        Random rand = new Random();
-
-        for (int i = 0; i < 10; i++) {
-            retangulos[i] = new Retangulo();
-            retangulos[i].setLargura(rand.nextInt(10) + 1);
-            retangulos[i].setAltura(rand.nextInt(10) + 1);
-        }
-
-        float maiorRazao = 0;
-        Retangulo melhorRetangulo = null;
-    
-        for (Retangulo r : retangulos) {
-            float razao = r.getArea() / r.getPerimetro();
-            if (razao > maiorRazao) {
-                maiorRazao = razao;
-                melhorRetangulo = r;
-            }
-        }
-    
-        if (melhorRetangulo != null) {
-            System.out.printf("O retângulo com a maior razão área/perímetro tem largura %.2f, altura %.2f, razão %.2f\n",
-                melhorRetangulo.getLargura(), melhorRetangulo.getAltura(), maiorRazao);
-        }
-    
+        Retangulo r1 = new Retangulo(5, 4);
+        Retangulo r2 = new Retangulo(6, 7);
+        
+        Retangulo maior = Retangulo.getMaiorAreaRetangulo();
+        System.out.println("Maior área: " + maior.getArea());
+        System.out.println("Dimensões: " + maior.getLargura() + " por " + maior.getAltura());
     }
 
     public static void TesteRelogio(){
