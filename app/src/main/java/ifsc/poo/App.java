@@ -107,25 +107,15 @@ public class App {
     }
 
     public static void TesteProduto(){
-        Produto produto_um = new Produto("Geladeira", 832);
-        Produto produto_dois = new Produto("Micro-ondas", 499);
-
-        System.out.printf("Produto: %s, preço: %.2f\n", produto_um.getNome(), produto_um.getPreco());
-        System.out.printf("Produto: %s, preço: %.2f\n", produto_dois.getNome(), produto_dois.getPreco());
-        System.out.println();
-
-        produto_um.setDesconto(6);
-        produto_dois.setDesconto(12);
-
-        aplicarDesconto(produto_um);
-        aplicarDesconto(produto_dois);
-        // Como o atributo do preço dos produtos é inteiro, não tem como representar os centavos, ao descontar...
-
-        System.out.printf("Produto: %s, novo preço: %.2f\n", produto_um.getNome(), produto_um.getPreco());
-        System.out.printf("Produto: %s, novo preço: %.2f\n", produto_dois.getNome(), produto_dois.getPreco());
-
-        System.out.println(produto_um.anuncio()); // O anúncio, apesar de funcionar, novamente lida com o problema de tipo de variável, não mostrando corretamente o preço do produto
-        //TODO: Como observação final, para que a implementação da classe opere corretamente, será preciso trocar os atributos de preço e desconto para o tipo float, que permite números decimais
+        Produto p1 = new Produto("Geladeira", 832);
+        Produto p2 = new Produto("Micro-ondas", 499);
+        Produto p1000 = new Produto("Fogão", 1200);
+        
+        System.out.println("Código do Produto 1: " + p1.getCodigo());
+        System.out.println("Código do Produto 2: " + p2.getCodigo());
+        System.out.println("Código do Produto 1000: " + p1000.getCodigo());
+            
+        System.out.println("Último produto: " + Produto.getUltimoProduto());
     }
     
     public static void TesteLivro() {
