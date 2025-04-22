@@ -70,4 +70,27 @@ public final class Produto {
     public String anuncio() {
         return this.nome + ": de R$ " + (this.preco + (this.preco * this.desconto / 100)) + " por APENAS R$ " + this.getPreco() + "!";
     }
+
+    public static String[] exportarRegistroCSV() {
+        if (registroProdutos.isEmpty()) {
+            return new String[] {"Nenhum produto registrado."};
+        }
+    
+        String[] csv = new String[registroProdutos.size() + 1];
+    
+        csv[0] = "Código;Nome;Preço;Desconto";
+    
+        for (int i = 0; i < registroProdutos.size(); i++) {
+            Produto produto = registroProdutos.get(i);
+            csv[i + 1] = String.format(
+                "%s;%s;%.2f;%d",
+                produto.getCodigo(),
+                produto.getNome(),
+                produto.getPreco(),
+                produto.getDesconto()
+            );
+        }
+    
+        return csv;
+    }
 }
