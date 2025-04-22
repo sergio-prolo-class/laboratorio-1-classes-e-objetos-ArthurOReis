@@ -3,12 +3,180 @@
  */
 package ifsc.poo;
 
+import java.util.Scanner;
+
+import ifsc.poo.classes.Barco;
+import ifsc.poo.classes.Lampada;
+import ifsc.poo.classes.Livro;
+import ifsc.poo.classes.Pessoa;
+import ifsc.poo.classes.Produto;
+import ifsc.poo.classes.Relogio;
+import ifsc.poo.classes.Retangulo;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Selecione qual teste você gostaria de fazer (Escolher de 1-6):");
+            System.out.println("1 - Teste da Lâmpada");
+            System.out.println("2 - Teste da Pessoa");
+            System.out.println("3 - Teste do Retângulo");
+            System.out.println("4 - Teste do Relógio");
+            System.out.println("5 - Teste do Produto");
+            System.out.println("6 - Teste do Livro");
+            System.out.println("7 - Teste do Barco");
+            System.out.print("> ");
+            int escolha = scanner.nextInt();
+            System.out.println();
+            
+            switch(escolha){
+                case 1 -> TesteLampada();
+                
+                case 2 -> TestePessoa();
+                
+                case 3 -> TesteRetangulo();
+                
+                case 4 -> TesteRelogio();
+                
+                case 5 -> TesteProduto();
+                
+                case 6 -> TesteLivro();
+                
+                case 7 -> TesteBarco();
+                
+                default -> System.out.println("Argumento inválido");
+            }
+        }
     }
+
+    public static void TesteLampada(){
+        Lampada lampada1 = new Lampada();
+        Lampada lampada2 = new Lampada();
+
+        lampada1.ligar();
+        lampada2.desligar();
+
+        System.out.println("Lampada 1 está ligada?: " + lampada1.Estado());
+        System.out.println("Lampada 2 está ligada?: " + lampada2.Estado());
+        
+        System.out.println("Quantia lâmpadas: " + lampada1.getQntTotalLampadas());
+    }
+
+    public static void TestePessoa(){
+        Pessoa pessoa1 = new Pessoa("");
+        Pessoa pessoa2 = new Pessoa("", "Arthur");
+        Pessoa pessoa3 = new Pessoa("109.876.543-21", "Eduardo", 19);
+
+        pessoa2.felizAniversario();
+        pessoa2.felizAniversario();
+        pessoa2.felizAniversario();
+
+        System.out.printf("A idade de %s é %d\n", pessoa1.getNome(), pessoa1.getIdade());
+        System.out.printf("A idade de %s é %d\n", pessoa2.getNome(), pessoa2.getIdade());
+
+        // pessoa1.setIdade(-44);
+        // pessoa2.setNome("");
+
+        /*
+            Os dois últimos atributos estão comentados por não compilar o código, já que retorna erros já previstos na classe
+        */
+
+        System.out.println("O CPF do Arthur é: " + pessoa2.getCPF());
+        System.out.println("O CPF do Eduardo é: " + pessoa3.getCPF());
+    }
+
+    public static void TesteRetangulo(){
+        Retangulo r1 = new Retangulo(5, 4);
+        Retangulo r2 = new Retangulo(6, 7);
+        Retangulo r3 = new Retangulo(2, 3);
+        
+        Retangulo maior = Retangulo.getMaiorAreaRetangulo();
+        Retangulo menor = Retangulo.getMenorPerimetroRetangulo();
+        
+        System.out.println("Maior área: " + maior.getArea());
+        System.out.println("Dimensões: " + maior.getLargura() + " por " + maior.getAltura());
+    
+        System.out.println("Menor perímetro: " + menor.getPerimetro());
+        System.out.println("Dimensões: " + menor.getLargura() + " por " + menor.getAltura());
+        
+    }
+
+    public static void TesteRelogio(){
+        Relogio relogio1 = new Relogio((byte)14, (byte)30, (byte)45);
+        Relogio relogio2 = new Relogio((byte)10, (byte)15, (byte)20);
+        
+        int diferenca = relogio1.diferencaEmSegundos(relogio2);
+        System.out.println("Diferença em segundos: " + diferenca);
+    }
+
+    public static void TesteProduto(){
+        Produto p1 = new Produto("Geladeira", 832);
+        Produto p2 = new Produto("Micro-ondas", 499);
+        Produto p1000 = new Produto("Fogão", 1200);
+        
+        System.out.println("Código do Produto 1: " + p1.getCodigo());
+        System.out.println("Código do Produto 2: " + p2.getCodigo());
+        System.out.println("Código do Produto 1000: " + p1000.getCodigo());
+            
+        System.out.println("Último produto: " + Produto.getUltimoProduto());
+
+        String[] csv = Produto.exportarRegistroCSV();
+
+        for (String linha : csv) {
+            System.out.println(linha);
+        }
+    }
+    
+    public static void TesteLivro() {
+        String[] titulosCapitulos = {
+            "Uma Festa Muito Esperada", "A Sombra do Passado", "Três é Demais", 
+            "Um Atalho para Cogumelos", "Uma Conspiração Desmascarada", "A Floresta Velha", 
+            "Em Casa de Tom Bombadil", "Névoa nas Colinas dos Túmulos", "No Pônei Empinado", 
+            "Passolargo", "Um Faca na Noite", "Voo para o Vau", "Muitos Encontros", 
+            "O Conselho de Elrond", "O Anel Vai para o Sul", "Uma Jornada no Escuro", 
+            "A Ponte de Khazad-dûm", "Lothlórien", "O Espelho de Galadriel", 
+            "Adeus a Lórien", "O Grande Rio", "A Partida da Sociedade"
+        };
+
+        int[] paginasInicio = {
+            1, 23, 44, 66, 89, 110, 131, 154, 176, 197, 219, 240, 261, 
+            282, 301, 320, 341, 361, 383, 403, 423, 446
+        };
+
+        Livro livro_um = new Livro(
+            "O Senhor dos Anéis - A Sociedade do Anel", 
+            "J. R. R. Tolkien", 
+            new String[] {"Fantasia", "Aventura"}, 
+            titulosCapitulos, 
+            paginasInicio, 
+            464
+        );
+
+        livro_um.lerPaginas(90);
+        System.out.println("Quantia de páginas restantes: " + livro_um.getTotalPaginas());
+        System.out.println("Capitulo atual: " + livro_um.getCapituloAtual());
+
+        livro_um.lerPaginas(300);
+        System.out.println("Capitulo atual: " + livro_um.getCapituloAtual());
+
+        // livro_um.lerPaginas(300); // -> Como a quantidade de páginas restantes é menor, logo é retornado um erro
+
+    }
+
+    public static void TesteBarco() {
+        Barco portaAvioes = new Barco("Porta-Aviões", 5, 'P');
+        portaAvioes.setPosicao(2, 3, true);
+
+        System.out.println("Barco atingido: " + portaAvioes.verificarAtingido(2, 3));
+        System.out.println("Barco afundado: " + portaAvioes.verificarAfundado());
+
+        portaAvioes.verificarAtingido(3, 3);
+        portaAvioes.verificarAtingido(4, 3);
+        portaAvioes.verificarAtingido(5, 3);
+        portaAvioes.verificarAtingido(6, 3);
+
+        System.out.println("Barco afundado: " + portaAvioes.verificarAfundado());
+    }
+
 }
