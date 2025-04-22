@@ -5,6 +5,7 @@ package ifsc.poo;
 
 import java.util.Scanner;
 
+import ifsc.poo.classes.Barco;
 import ifsc.poo.classes.Lampada;
 import ifsc.poo.classes.Livro;
 import ifsc.poo.classes.Pessoa;
@@ -24,6 +25,7 @@ public class App {
             System.out.println("4 - Teste do Relógio");
             System.out.println("5 - Teste do Produto");
             System.out.println("6 - Teste do Livro");
+            System.out.println("7 - Teste do Barco");
             System.out.print("> ");
             int escolha = scanner.nextInt();
             System.out.println();
@@ -40,6 +42,8 @@ public class App {
                 case 5 -> TesteProduto();
                 
                 case 6 -> TesteLivro();
+                
+                case 7 -> TesteBarco();
                 
                 default -> System.out.println("Argumento inválido");
             }
@@ -116,6 +120,12 @@ public class App {
         System.out.println("Código do Produto 1000: " + p1000.getCodigo());
             
         System.out.println("Último produto: " + Produto.getUltimoProduto());
+
+        String[] csv = Produto.exportarRegistroCSV();
+
+        for (String linha : csv) {
+            System.out.println(linha);
+        }
     }
     
     public static void TesteLivro() {
@@ -154,8 +164,19 @@ public class App {
 
     }
 
-    private static void aplicarDesconto(Produto produto) {
-        float precoComDesconto = produto.getPreco() - (produto.getPreco() * produto.getDesconto() / 100);
-        produto.setPreco((int) precoComDesconto);
+    public static void TesteBarco() {
+        Barco portaAvioes = new Barco("Porta-Aviões", 5, 'P');
+        portaAvioes.setPosicao(2, 3, true);
+
+        System.out.println("Barco atingido: " + portaAvioes.verificarAtingido(2, 3));
+        System.out.println("Barco afundado: " + portaAvioes.verificarAfundado());
+
+        portaAvioes.verificarAtingido(3, 3);
+        portaAvioes.verificarAtingido(4, 3);
+        portaAvioes.verificarAtingido(5, 3);
+        portaAvioes.verificarAtingido(6, 3);
+
+        System.out.println("Barco afundado: " + portaAvioes.verificarAfundado());
     }
+
 }
